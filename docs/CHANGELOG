@@ -1,0 +1,77 @@
+1.5
+===
+
+- Faster startup (over 10 times faster for large libraries)!
+
+- Larger, more readable fonts
+
+- New bookmark screen with time editing
+
+- Bookmarks may be played in order using << and >> buttons
+
+- Podcasts display and are sorted by release date
+
+- New 'Sound Settings' lets you set volume and optional vibration for different sounds
+
+- New, easier to use Sleep Timer
+
+- Share what you're listening to via Twitter, Facebook, or email
+
+- Added "Expanded book search" setting for searching the Music library for tracks of genre "Audiobook", "Audiobooks", or "Speech", regardless of whether they are in the "Books" category of iTunes
+
+
+1.2.5
+=============
+
+- Fixed iOS 4.2.1 bookmarking bug 
+
+- Quick bookmarking now available. Tap-and-hold bookmark button to create a
+bookmark without having to tap "Save".  In Settings, you can make this the default action.
+
+- Time Ribbon times are now customizable.  See Settings > Time Ribbon Settings.
+
+- Seek forward or backward without using the Time Ribbon.  Tap-and-hold the
+<< or >> buttons.
+
+- Fixed scrolling problem in the Notes screen
+
+- Notes now supports landscape mode
+
+- Option to turn off 1-minute chime in Sleep Timer
+
+
+1.2.3
+=============
+
+- Fixed chapter display and selection problem
+
+- Began addressing accessibility via VoiceOver
+
+
+1.2.2
+===========
+
+- Tested on iOS 4
+
+- Long book and track titles scroll for better reading
+
+- Fixed bookmark delete problem in iPad
+
+- New sleep timer option: rock the device gently to add 10 minutes.  See settings. 
+
+- Added 1-minute remaining chime in sleep timer
+
+- "Playing" button becomes "Last Played" when not playing
+
+- Spinning indicator shows new track selection
+
+- Smaller memory footprint
+
+- Fixed shake action inconsistency
+
+
+PRIOR VERSIONS
+==============
+
+Versions were not well-documented before version 1.2.2
+

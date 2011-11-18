@@ -1,0 +1,57 @@
+//
+// Prefix header for all source files of the 'Bookmark' target in the 'Bookmark' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+    #import <CoreData/CoreData.h>
+	#import <MediaPlayer/MediaPlayer.h>
+	#import "BookmarkAppDelegate.h"
+    #import "DMUserDefaults.h"
+    //#import "TestFlight.h"
+#endif
+
+// Marcus Zarra's log helper http://www.cimgf.com/2010/05/02/my-current-prefix-pch-file/
+#ifdef DEBUG
+#define DLog(...) NSLog(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
+#define ALog(...) [[NSAssertionHandler currentHandler] handleFailureInFunction:[NSString stringWithCString:__PRETTY_FUNCTION__ encoding:NSUTF8StringEncoding] file:[NSString stringWithCString:__FILE__ encoding:NSUTF8StringEncoding] lineNumber:__LINE__ description:__VA_ARGS__]
+#else
+#define DLog(...) do { } while (0)
+#ifndef NS_BLOCK_ASSERTIONS
+#define NS_BLOCK_ASSERTIONS
+#endif
+#define ALog(...) NSLog(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
+#endif
+
+#define ZAssert(condition, ...) do { if (!(condition)) { ALog(__VA_ARGS__); }} while(0)
+////////////////// end log helpers //////////////////////
+
+//Common colors
+#define BACKGROUND_COLOR [UIColor colorWithRed:0.19 green:0.084 blue:0.048 alpha:1.000]
+#define PRIMARY_TEXT_COLOR [UIColor colorWithRed:0.996 green:0.949 blue:0.804 alpha:1.000] //[UIColor colorWithRed:0.992 green:0.971 blue:0.782 alpha:1.000] // creamy white
+#define SECONDARY_TEXT_COLOR [UIColor colorWithRed:0.996 green:0.986 blue:0.936 alpha:1.000] // whiter than above
+
+// Common fonts
+#define STANDARD_FONT_16 [UIFont fontWithName:@"Helvetica Neue" size:16.0]
+#define STANDARD_FONT_15 [UIFont fontWithName:@"Helvetica Neue" size:15.0]
+
+typedef enum {
+	LibraryCategoryBooks,
+	LibraryCategoryPodcasts,
+	LibraryCategoryiTunesU,
+	LibraryCategoryPlaylist,
+	LibraryCategoryBookmarks,
+} LibraryCategory;
+
+typedef enum {
+	LibrarySortOrderTitle,
+	LibrarySortOrderAuthor,
+	LibrarySortOrderRecent,
+} LibrarySortOrder;

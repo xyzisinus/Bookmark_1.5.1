@@ -1,0 +1,22 @@
+Prior to version 1.5 Bookmark used eager-loading to query Track-level details for all tracks and constructed Work objects based on those tracks. This method worked but was slow for users with large libraries. Starting in 1.5, I switched to using a lazy-loading approach that relies on MPMusicPlayerController's automatic grouping of tracks into collections. 
+
+The high-level overview of the process is:
+
+Cold Start into LibraryViewController
+=====================================
+
+  1.  fetchWorksFromIpod calls static method loadWorksForCategory: on Work
+
+  2.  Work performs an audiobooksQuery via MPMediaQuery
+
+  3.  Iterates over array of MPMediaItemCollections, for each:
+
+      a.  Requests a representative MPMediaItem (track)
+
+      b.  Creates a Track for the MPMediaItem if doesn't exist (via static method on Track)
+
+      c.  Creates a Work object based on the track's Author and Title if one doesn't exist
+
+      d.  Retains a reference to the MPMediaItemCollection for later use
+
+ 

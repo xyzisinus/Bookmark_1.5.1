@@ -1,0 +1,56 @@
+Beta 1:
+
+- Faster startup for large libraries compared to 1.2.5.
+- Cleaner fonts throughout.
+- New bookmark screen designed to be more readable.
+- Bookmark titles auto-expand.
+- Bookmark time is editable.
+- Bookmarks may be played in order using the << and >> buttons.
+- Progress bar replaced by pie chart to allow for more text.
+
+Beta 2:
+
+- Notes again working on player screen.
+- Added date to podcasts in work detail screen (when tapping blue arrow on library screen).
+- Font and colors now consistent in work detail screen.
+- Increased font size on bookmark.
+- Added Sound Settings.
+
+Beta 3:
+
+- New Sleep Timer screen.
+- Bookmarks for podcasts now match track order.
+- Trash icon in bookmark screen working.
+- Fixed volume/buzz inconsistency between sound settings and player screen.
+
+Beta 4:
+
+- Fixed startup image problem on non-retina devices.
+- New art for tracks without associated album art.
+- Changed "no books" copy.
+- Larger "back" button in HUD (as large as is allowed).
+- Fixed bug in bookmarking.
+
+Beta 5:
+
+- Reset database and settings now working (no need to test reset DB).
+- Modified sound settings UI.
+- Fixed bug in sound settings for "buzz".
+- Social and email functions working.
+
+NOTE: This will be the last build for the temporary app named "Bkmk Beta". The next beta will overwrite Bookmark 1.2.5 (if you already have it installed).
+
+Beta 6:
+
+- Fixed major bug in beta 5 that made podcasts not show up at all. Oops, sorry.
+
+Beta 7:
+
+- Added "Expanded book search" setting for Windows users who are finding WMA and MP3 tracks won't play if they're in the Books section, but will if they're in Music. This is an Apple iOS 5 problem but I added this setting as a temporary workaround. Turning it On will include any tracks from the genres "Audiobook", "Audiobooks", or "Speech". It's turned Off by default because it negatively impacts load time.
+
+- Fixed "shake to bookmark" bug.
+
+Release Candidate 1 (installed as "Bookmark"):
+
+- Fixed intermittent sort problem with bookmarks.
+- Fixed "Jump to Latest Time".

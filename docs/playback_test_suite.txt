@@ -1,0 +1,26 @@
+
+1. Start a multi-track book or podcast from the library view. Allow it to progress from one track to another without tapping the FF button (you can guide the time close to end of track to speed this up).  The track and titles should update correctly.
+
+2.  Use the FF and REW buttons to test manual track changes. 
+
+3.  Start on some multi-track track, use FF button to advance.  Exit app and resume to verify is on correct track.
+
+4. Start a track from the book accessory detail indicator.  With a book playing, navigate back out to detail view and choose a different track.
+
+5. Play back bookmarks from different tracks to ensure track title and time update when switching back to player.
+
+6. Start Bookmark with a book already playing.
+
+7. Start Bookmark with a non-book (and non-podcast) track playing. It should stop playback.
+
+8. Start a multi-track work in player and position time near the end of the track.  Enter HUD and allow track to change automatically.  Go back to player and verify correct track # is set.
+
+9. Try final track of a multi-track book, allow it to end and make sure no errors occur.
+
+
+---------------------------------------------------------------------
+iOS4+ with backgrounding only
+
+10.  With track playing in Bookmark, add/remove track in iTunes and sync.  MPMediaPlayerController errors will appear (when seeking current time) but these I think can be safely ignored.  When done, the PlayerViewController should pop off revealing RootViewController which will update its library.
+
+11.  Exit Bookmark (will not be in background state).  Sync like above and reopen Bookmark.  Should refresh library when RootViewController is selected.
