@@ -2240,7 +2240,7 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution: DockMarket, LLC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DockMarket, LLC";
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bookmark_Prefix.pch;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -2302,7 +2302,7 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bookmark_Prefix.pch;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
