@@ -30,15 +30,15 @@
     
     // Start TestFlight
     //[TestFlight takeOff:@"34c35fbe6dba1fb14bbc9cd68a77fb2a_MTA3MDAyMDExLTExLTA0IDEwOjMwOjIxLjU2MTYzNA"];
-    
-    // Start Flurry
-    [FlurryAnalytics startSession:@"8CAFIEM1JJK1WZEIBY6I"];
-    
-    // Start Hoptoad
+        
+    // Start Airbrake
     [ABNotifier startNotifierWithAPIKey:@"a3ea610653195063da492e56220bb3fd"
                         environmentName:ABNotifierAutomaticEnvironment
                                  useSSL:YES
                                delegate:nil];
+        
+    // Start Flurry
+    [FlurryAnalytics startSession:@"8CAFIEM1JJK1WZEIBY6I"];
             
     // Set defaults
     [[DMUserDefaults sharedInstance] initializeDefaults];
@@ -181,30 +181,6 @@
 #pragma mark -
 #pragma mark Memory management
 
-- (void)logMemory {	
-	mach_port_t host_port;
-	mach_msg_type_number_t host_size;
-	vm_size_t pagesize;
-	
-	host_port = mach_host_self();
-	host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
-	host_page_size(host_port, &pagesize);        
-	
-	vm_statistics_data_t vm_stat;
-	
-	if (host_statistics(host_port, HOST_VM_INFO, (host_info_t)&vm_stat, &host_size) != KERN_SUCCESS)
-		DLog(@"Failed to fetch vm statistics");
-	
-	/* Stats in bytes  */
-	natural_t mem_used = (vm_stat.active_count +
-						  vm_stat.inactive_count +
-						  vm_stat.wire_count) * pagesize;
-	natural_t mem_free = vm_stat.free_count * pagesize;
-	natural_t mem_total = mem_used + mem_free;
-	DLog(@"used: %u free: %u total: %u", mem_used, mem_free, mem_total);	 
-	
-}
-
 - (void)didReceiveMemoryWarning {
 	DLog(@"app delegate memory warning");
 	
@@ -212,7 +188,6 @@
 	MasterMusicPlayer *mmp = [MasterMusicPlayer instance];
 	[mmp clearMediaItemCache];
 }
-
 
 - (void)dealloc {
     

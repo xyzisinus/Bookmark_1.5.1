@@ -21,7 +21,6 @@
 
 - (void)setDeviceAwakeState:(BOOL)awake;
 - (void)saveOnExit;
-- (void)logMemory;
 
 @end
 

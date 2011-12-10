@@ -8,6 +8,8 @@
 
 #import "WorkCell.h"
 
+#define DATE_1970 [NSDate dateWithTimeIntervalSince1970:0]
+
 @interface WorkCell (Private)
 - (void)loadAlbumArtInBackgroundForCollection:(MPMediaItemCollection *)collection;
 - (void)setImage:(UIImage *)image;
@@ -56,10 +58,13 @@
         int newCount = [collection newCount];
         		
         progressPie.progress = (float) (count - newCount) / (float) count;
-                 
-        secondaryLabel.text = [NSDateFormatter localizedStringFromDate:collection.mostRecentDate
-                                                             dateStyle:NSDateFormatterMediumStyle 
-                                                             timeStyle:NSDateFormatterNoStyle];
+        
+        NSDate *podcastDate = collection.mostRecentDate;
+        if ([podcastDate compare:DATE_1970] == NSOrderedDescending) {
+            secondaryLabel.text = [NSDateFormatter localizedStringFromDate:collection.mostRecentDate
+                                                                 dateStyle:NSDateFormatterMediumStyle 
+                                                                 timeStyle:NSDateFormatterNoStyle];
+        }
          
 	} else {
 		secondaryLabel.text = [collection author];

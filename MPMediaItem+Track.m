@@ -87,14 +87,13 @@
 - (void)updateAsComplete {
     Track *track = [self associatedTrackOrNew];
     track.lastTime = [NSNumber numberWithLong:[self duration]];
-    track.maxTime = track.lastTime;
+    track.maxTime = [NSNumber numberWithLong:[self duration]];
 }
 
 - (void)updateAsNew {
     Track *track = [self associatedTrackOrNew];
     track.lastTime = [NSNumber numberWithLong:0];
-    track.maxTime = [NSNumber numberWithLong:0];
-    NSLog(@"Updating as new");
+    track.maxTime = [NSNumber numberWithLong:0];    
 }
 
 // Returns persisted Track object associated with this item, if any.

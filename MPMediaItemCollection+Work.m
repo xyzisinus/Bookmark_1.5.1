@@ -21,7 +21,7 @@
     } else if (category == LibraryCategoryPodcasts) {
         collections = [self podcastCollections];        
     } 
-        
+                
     // Apply sort
     NSString *sortKey = @"sortTitle";
     if (sortOrder == LibrarySortOrderAuthor) sortKey = @"sortAuthor";
@@ -38,13 +38,11 @@
 
 + (NSArray *)audiobookCollections {
    
-    // If on iOS >= 4.2, return the unique collections from the Audiobooks tab, and genres "Speech", "Audiobook", and "Audiobooks".
+    // If set in Settings, return the unique collections from the Audiobooks tab, and genres "Speech", "Audiobook", and "Audiobooks".
     MPMediaQuery *q1 = [MPMediaQuery audiobooksQuery];
     q1.groupingType = MPMediaGroupingAlbum;
     
-    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
-    if (version < 4.2 || [[[DMUserDefaults sharedInstance] objectForKey:EXPANDED_BOOK_SEARCH] boolValue] == NO) {
-        DLog(@"Short audiobook query");
+    if ([[[DMUserDefaults sharedInstance] objectForKey:EXPANDED_BOOK_SEARCH] boolValue] == NO) {
         return [q1 collections];
     }
         

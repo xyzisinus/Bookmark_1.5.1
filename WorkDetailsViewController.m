@@ -104,13 +104,24 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {    
+    
+    // Clear MMP's current collection if it's also this controller's collection.
+    MasterMusicPlayer *mmp = [MasterMusicPlayer instance];
+    if (mmp.currentCollection != nil && mmp.currentCollection.persistentId == collection.persistentId) {
+        if (mmp.playerController.playbackState == MPMusicPlaybackStatePlaying) {
+            [mmp togglePlayPause];
+        }
+        [mmp setCollectionForColdPlayback:nil];
+        mmp.lastPlayedItem = nil;
+    }
+    
 	if (actionSheet.tag == 0 && buttonIndex == 0) {
         [collection updateAsNew];
 		[tableView reloadData];
 	} else if (actionSheet.tag == 1 && buttonIndex == 0) {
 		[collection updateAsComplete];
 		[tableView reloadData];
-	}
+	}    
 }
 
 /*

@@ -24,6 +24,7 @@
 - (void)topBooksButtonWasPressed;
 - (void)upgrayyedButtonWasPressed;
 - (void)sendEmailWithSubject:(NSString *)subject andBody:(NSString *)body andTo:(NSString *)to;
+- (void)sendEmailWithSubject:(NSString *)subject andBody:(NSString *)body andTo:(NSString *)to useHtml:(BOOL)html;
 - (void)openWebViewToURLString:(NSString *)urlString;
 - (void)settingsHelpButtonWasPressed;
 - (void)resetDbWasPressed;

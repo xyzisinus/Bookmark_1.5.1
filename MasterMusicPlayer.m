@@ -19,6 +19,7 @@ static MasterMusicPlayer *_instance;
 @synthesize bellPlayer, clickPlayer, chimePlayer;
 @synthesize lastPlayedItem;
 @synthesize mediaItemsDict;
+@synthesize isIPad;
 
 - (void)dealloc {		
 	[self unregisterForNotifications];
@@ -62,15 +63,15 @@ static MasterMusicPlayer *_instance;
 		NSError *setCategoryError = nil;				
 		[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient 
                                                error: &setCategoryError];
-				
+        
 		// Make sure ringer switch turned off doesn't mute playback 
 		UInt32 doSetProperty = true;
         OSStatus propertySetError = 0;
 		propertySetError = AudioSessionSetProperty (
-								 kAudioSessionProperty_OverrideCategoryMixWithOthers,
-								 sizeof (doSetProperty),
-								 &doSetProperty
-								 );
+                                                    kAudioSessionProperty_OverrideCategoryMixWithOthers,
+                                                    sizeof (doSetProperty),
+                                                    &doSetProperty
+                                                    );
         if (propertySetError != 0) {
             DLog(@"Error setting OverrideCategoryMixWithOthers on session");
         }             
@@ -91,7 +92,7 @@ static MasterMusicPlayer *_instance;
 		self.bellPlayer  = [[[AVAudioPlayer alloc] initWithContentsOfURL:bellUrl error:nil] autorelease];
 		[bellUrl release];
 		[bellPlayer prepareToPlay];
-			                      
+        
         // Add the click sound
         NSString *clickFilePath = [[NSBundle mainBundle] pathForResource:@"click_09" ofType:@"caf"];
 		NSURL *clickUrl = [[NSURL alloc] initFileURLWithPath:clickFilePath];
@@ -108,27 +109,34 @@ static MasterMusicPlayer *_instance;
         
         // Set volumes and buzz prefs
         [self setPlayerVolumes];
-                		
+        
 		// Create a dictionary for temporarily storing mediaitems (we go this b/c tracks are quickly faulted
 		// by CoreData and would have to otherwise request MediaItems from MPMusicPlayer frequently)
 		self.mediaItemsDict = [[[NSMutableDictionary alloc] init] autorelease];
-				
+        
 		// Turn OFF repeating and shuffle
 		[self.playerController setRepeatMode:MPMusicRepeatModeNone];
 		[self.playerController setShuffleMode:MPMusicShuffleModeOff];
-			
+        
 		// Set this to zero. Will be set when bookmarks are selected
 		forcePlaybackTime = 0;	
-		        
+        
         // Ignore any item pre-set on MPMusicPlayerController unless playing
         // because nowPlayingItemChanged WILL be triggered after subscribing to notifications (below)
         if (playerController.nowPlayingItem != nil && playerController.playbackState != MPMusicPlaybackStatePlaying) {
             ignoreNowPlayingItemChange = YES;
         }
+        
+        // Determine if this is an iPad because of a bug that requires special handling in setCollectionForPlayback
+        NSString *device = [[UIDevice currentDevice] platformString];
+        if ([device rangeOfString:@"iPad"].length > 0) {
+            isIPad = YES;
+            isFirstPlayback = YES;
+        }
 		
 		// Register for playback change notifications        
 		[self registerForNotifications];
-							
+        
 	}
 	return self;
 }
@@ -159,38 +167,48 @@ static MasterMusicPlayer *_instance;
 // Triggered on the iPod player's item being changed.
 // Set the correct playback time based on didUserRequestChange state.
 - (void)nowPlayingItemChanged:(NSNotification *)notification {
-		
-	// Disregard repeat requests (iPod often notifies each change 3 times)
-	self.currentItem = playerController.nowPlayingItem; 
-    currentTrackTotalTime = [currentItem duration];
+    
+    DLog(@"nowPlayingItemChanged");
     	
-	if (lastPlayedItem != nil && lastPlayedItem.persistentId == currentItem.persistentId) {        
+	if (itemSetManually == NO) self.currentItem = playerController.nowPlayingItem; 
+    currentTrackTotalTime = [currentItem duration];
+    
+    // Disregard repeat requests (iPod often notifies > once).
+    // Also can occur when the same collection was tapped by the user twice by playing,
+    // backing out, then re-tapping same collection.
+	if (lastPlayedItem != nil && lastPlayedItem.persistentId == currentItem.persistentId) {                
+        DLog(@"ignoring nowPlayingItem because ID's match: %lld",lastPlayedItem.persistentId);        
+        itemSetManually = NO;
 		return;
 	} 
     
-	DLog(@"nowPlayingItemChanged");
-    
     if (ignoreNowPlayingItemChange == NO) {
+        
         if (didUserRequestItemChange == YES) {            
             [self evalTime];            
         } else {            
             // Track was auto-advanced during playback. Set last track as completed.
             if (lastPlayedItem != nil && lastPlayedItem != currentItem) {           
                 [lastPlayedItem updateAsComplete];
-                [CoreDataUtility save];
-                DLog(@"lastItem save");
+                [CoreDataUtility save];                
             }       
         }
+        
+        self.lastPlayedItem = currentItem;
+        
+        // Save to prefs
+        [[DMUserDefaults sharedInstance] setObject:[NSNumber numberWithLongLong:currentItem.persistentId] 
+                                            forKey:@"lastPlayedId"];
+        
+        // Broadcast to listeners
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PlayingItemChanged" object:nil];
+        
+        itemSetManually = NO;
+        isFirstPlayback = NO;
+        
+    } else {
+        DLog(@"ignoring nowPlayingItem because of flag");
     }
-    
-    self.lastPlayedItem = currentItem;
-    
-    // Save to prefs
-    [[DMUserDefaults sharedInstance] setObject:[NSNumber numberWithLongLong:currentItem.persistentId] 
-                                       forKey:@"lastPlayedId"];
-    
-	// Broadcast to listeners
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"PlayingItemChanged" object:nil];
 }
 
 // Evaluate whether time should be changed for the current item
@@ -202,11 +220,10 @@ static MasterMusicPlayer *_instance;
 		// isn't affected by the iPod at all.
 		
         [self.playerController setCurrentPlaybackTime:forcePlaybackTime];
-		forcePlaybackTime = 0;
-		DLog(@"Forced playback time in evalTime");
+		forcePlaybackTime = 0;		
 		
 	} else {
-       
+        
 		// Choose the later of the iPod's or stored current time UNLESS (stored time is zero AND it was listened to previously)
 		
         long iPodTime = self.playerController.currentPlaybackTime;
@@ -216,9 +233,7 @@ static MasterMusicPlayer *_instance;
             [self.playerController setCurrentPlaybackTime:0.0];
         } else if ((dbTime > iPodTime) || (dbTime == 0 && currentItem.hasTrack == YES)) {
 			[playerController setCurrentPlaybackTime:dbTime];
-        }
-        
-        DLog(@"Standard evalTime");        
+        }              
     } 
     
     didUserRequestItemChange = NO;
@@ -233,22 +248,51 @@ static MasterMusicPlayer *_instance;
                           withItem:item]; 
 }
 
-// Called from WorkDetailsViewController when an item is selected from the table view
+// Sole method of changing tracks except when auto-advanced, or via << or >> buttons.
+// DO NOT lightly change flags. Test with iOS 4 iPod Touch, iOS 5 phone, and iPad.
 - (void)setCollectionForPlayback:(MPMediaItemCollection *)collection withItem:(MPMediaItem *)item {
-    self.currentCollection = collection;    
-    ignoreNowPlayingItemChange = YES;   // set temporarily otherwise would trigger nowPlayingItemChanged twice (once for collection, once for item)
+        
+    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if (version < 5.0) { 
+        MPMediaItemCollection *newColl = [MPMediaItemCollection collectionWithItems:[collection items]];
+        self.currentCollection = newColl;
+    } else {        
+        self.currentCollection = collection; 
+    }
+       
+    // Set temporarily else would trigger nowPlayingItemChanged twice (once for collection, once for item)
+    ignoreNowPlayingItemChange = YES;       
     [playerController setQueueWithItemCollection:currentCollection];   
     ignoreNowPlayingItemChange = NO;
-    didUserRequestItemChange = YES; // differentiates from auto-advance
-    playerController.nowPlayingItem = item;  
+    
+    // Differentiates from auto-advance, also set by << or >>
+    didUserRequestItemChange = YES; 
+          
+    // On iOS 4 compiled against iOS 5, MP is all fucked up
+    if (version < 5.0) { 
+        // When YES, nowPlayingItemChanged won't set item from player 
+        itemSetManually = YES;        
+        self.currentItem = item;        
+    }
+        
+    playerController.nowPlayingItem = item;
+    
+    // Special handling due to iPad bug that causes nowPlayingItem to not fire until the 2nd reques
+    if (isIPad == YES && isFirstPlayback == YES) {
+        [self nowPlayingItemChanged:nil];
+    }
 }
 
 - (void)playbackStateChanged:(NSNotification *)notification {
+    
+    DLog(@"playback state: %i",playerController.playbackState);
 	
 	//notify listeners like PlayerVC
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"PlaybackStateChanged" object:nil];
 	
-    [self updateWork];
+    // In version 1.5.1 removed auto-saving here. There are too many ways for this to go wrong including
+    // saving before the current time is loaded from DB and when transitioning from pause to playing.
+    // Better to save at specific events.
 }
 
 - (void)libraryChanged:(NSNotification *)notification {
@@ -270,7 +314,7 @@ static MasterMusicPlayer *_instance;
 	 selector:    @selector (playbackStateChanged:)
 	 name:        MPMusicPlayerControllerPlaybackStateDidChangeNotification
 	 object:      nil];
-		
+    
 	[self.playerController beginGeneratingPlaybackNotifications];
 	
 	[notificationCenter
@@ -302,11 +346,11 @@ static MasterMusicPlayer *_instance;
 }
 
 - (void)updateWork {	
-    if (currentCollection != nil && lastPlayedItem != nil) {        
+    if (currentCollection != nil && lastPlayedItem != nil) {         
         [currentCollection saveState];
     }	
 }
-						   
+
 - (BOOL)isPlaying {	
 	return self.playerController.playbackState == MPMusicPlaybackStatePlaying;
 }
@@ -405,7 +449,7 @@ static MasterMusicPlayer *_instance;
 //a track has been selected directly, for instance by a bookmark being selected
 - (void)playTrack:(Track *)track atTime:(long)time{
 	MPMediaItem *item = track.mediaItem;
- 
+    
 	if (item.persistentId == currentItem.persistentId) {
 		[self.playerController setCurrentPlaybackTime:time];
 	} else {

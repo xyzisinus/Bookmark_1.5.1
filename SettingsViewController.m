@@ -20,6 +20,7 @@
 #import "SoundsViewController.h"
 #import "CoreDataUtility.h"
 #import "MasterMusicPlayer.h"
+#import "UIDevice+Hardware.h"
 
 @implementation SettingsViewController
 
@@ -337,7 +338,12 @@
 }
 
 - (IBAction)supportButtonWasPressed {
-	[self sendEmailWithSubject:@"Support request" andBody:nil andTo:@"support@bookmarkapp.com"];
+    NSString *body = [NSString stringWithFormat:@"\n\n\n\n\nBookmark version: %@\niOS version: %@\nDevice: %@",
+                      [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
+                      [[UIDevice currentDevice] systemVersion],
+                      [[UIDevice currentDevice] platformString]];
+    
+	[self sendEmailWithSubject:@"Support request" andBody:body andTo:@"support@bookmarkapp.com" useHtml:NO];
 }
 
 - (IBAction)tellFriendButtonWasPressed {
@@ -350,6 +356,13 @@
 }
 
 - (void)sendEmailWithSubject:(NSString *)subject andBody:(NSString *)body andTo:(NSString *)to {
+    [self sendEmailWithSubject:subject 
+                       andBody:body 
+                         andTo:to 
+                       useHtml:YES];
+}
+
+- (void)sendEmailWithSubject:(NSString *)subject andBody:(NSString *)body andTo:(NSString *)to useHtml:(BOOL)html {
 	MFMailComposeViewController *composeVC = [[MFMailComposeViewController alloc] init];    
     composeVC.mailComposeDelegate = self;    
 
@@ -358,7 +371,7 @@
 	}
 	
     [composeVC setSubject:subject];    
-	[composeVC setMessageBody:body isHTML:YES];
+	[composeVC setMessageBody:body isHTML:html];
 	
     [self presentModalViewController:composeVC animated:YES];
     [composeVC release];

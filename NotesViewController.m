@@ -87,9 +87,9 @@
 }
 
 - (CGRect)notesViewFrame {
-	UIInterfaceOrientation orientation = [[UIDevice currentDevice] orientation];
+	UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
 	
-	if (orientation == UIInterfaceOrientationPortrait) {
+	if (orientation == UIDeviceOrientationPortrait) {
 		return (keyboardShowing? KEYBOARD_VISIBLE_PORTRAIT : KEYBOARD_HIDDEN_PORTRAIT);
 	} else {
 		return (keyboardShowing? KEYBOARD_VISIBLE_LANDSCAPE : KEYBOARD_HIDDEN_LANDSCAPE);

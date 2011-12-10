@@ -28,6 +28,7 @@
 	MasterMusicPlayer                   *player;
 	BOOL                                inCategoryLoad;
     BOOL                                handledPlaybackInViewDidLoad;
+    BOOL                                waitingItemChange;
 }
 
 @property (nonatomic, retain) UIView                    *selBackView;
@@ -48,6 +49,7 @@
 - (void)beginCategoryLoad;
 - (void)fetchWorksFromMusicLibrary;
 - (void)endCategoryLoad:(NSArray *)collections;
+- (void)nowPlayingItemChanged:(NSNotification *)notification;
 - (WorkCell *) createNewBookCellFromNib;
 - (void)setCategory:(NSNumber *)categoryNumber;
 - (void)setSortOrder:(LibrarySortOrder)order;

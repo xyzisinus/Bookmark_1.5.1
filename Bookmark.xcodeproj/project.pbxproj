@@ -198,6 +198,8 @@
 		4CABC44D144DD715006BE3DF /* toolbar_play_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CABC448144DD715006BE3DF /* toolbar_play_pause.png */; };
 		4CABC44E144DD715006BE3DF /* toolbar_prev.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CABC449144DD715006BE3DF /* toolbar_prev.png */; };
 		4CABC44F144DD715006BE3DF /* toolbar_prev.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CABC449144DD715006BE3DF /* toolbar_prev.png */; };
+		4CB0D50514843393002FD80B /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0D50414843393002FD80B /* UIDevice+Hardware.m */; };
+		4CB0D50614843393002FD80B /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0D50414843393002FD80B /* UIDevice+Hardware.m */; };
 		4CBFD7F014354F1200BA7A47 /* click_09.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4CBFD7EE14354F1200BA7A47 /* click_09.caf */; };
 		4CBFD7F114354F1200BA7A47 /* click_09.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4CBFD7EE14354F1200BA7A47 /* click_09.caf */; };
 		4CBFD7F214354F1200BA7A47 /* Sound_18.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4CBFD7EF14354F1200BA7A47 /* Sound_18.caf */; };
@@ -211,8 +213,8 @@
 		4CCE56731157DDE600C7EC58 /* web_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCE56711157DDE600C7EC58 /* web_back.png */; };
 		4CE00B5E1470A0AE00C9C9D5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE00B5D1470A0AE00C9C9D5 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4CE00B601470A0D300C9C9D5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE00B5F1470A0D300C9C9D5 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		4CE5CC551472EC60004A72D4 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE5CC541472EC60004A72D4 /* libFlurryAnalytics.a */; };
-		4CE5CC561472EC60004A72D4 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE5CC541472EC60004A72D4 /* libFlurryAnalytics.a */; };
+		4CE09C811481447800B54EA0 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE09C801481447800B54EA0 /* libFlurryAnalytics.a */; };
+		4CE09C821481447800B54EA0 /* libFlurryAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE09C801481447800B54EA0 /* libFlurryAnalytics.a */; };
 		4CE5CC791472F6E1004A72D4 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5CC5B1472F6E1004A72D4 /* DDXMLElementAdditions.m */; };
 		4CE5CC7A1472F6E1004A72D4 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5CC5B1472F6E1004A72D4 /* DDXMLElementAdditions.m */; };
 		4CE5CC7B1472F6E1004A72D4 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5CC5E1472F6E1004A72D4 /* NSString+DDXML.m */; };
@@ -294,6 +296,7 @@
 		4CED4AEF117D309400F9F6F5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C01854911542680003A436F /* MessageUI.framework */; };
 		4CED4AF0117D309400F9F6F5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C018554115426AB003A436F /* libsqlite3.dylib */; };
 		4CED4AF1117D309400F9F6F5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCE56621157DCDC00C7EC58 /* SystemConfiguration.framework */; };
+		4CF1C242148FBBA700006B92 /* Bookmark-Info2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CF1C241148FBBA700006B92 /* Bookmark-Info2.plist */; };
 		4CF8C17E119B54BB00F9368F /* AdBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4EAF9911809B7B004F41A0 /* AdBannerViewController.m */; };
 		4CFA42D111CE9CED00DD7306 /* bookmark-full-indexed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CFA42D011CE9CED00DD7306 /* bookmark-full-indexed.png */; };
 		4CFA42E411CE9D4000DD7306 /* bookmark-full-indexed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CFA42D011CE9CED00DD7306 /* bookmark-full-indexed.png */; };
@@ -619,6 +622,8 @@
 		4CABC447144DD715006BE3DF /* toolbar_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_next.png; sourceTree = "<group>"; };
 		4CABC448144DD715006BE3DF /* toolbar_play_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_play_pause.png; sourceTree = "<group>"; };
 		4CABC449144DD715006BE3DF /* toolbar_prev.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_prev.png; sourceTree = "<group>"; };
+		4CB0D50314843393002FD80B /* UIDevice+Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Hardware.h"; sourceTree = "<group>"; };
+		4CB0D50414843393002FD80B /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Hardware.m"; sourceTree = "<group>"; };
 		4CBFD7EE14354F1200BA7A47 /* click_09.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = click_09.caf; sourceTree = "<group>"; };
 		4CBFD7EF14354F1200BA7A47 /* Sound_18.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound_18.caf; sourceTree = "<group>"; };
 		4CCE55DF1157C9D300C7EC58 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -632,8 +637,8 @@
 		4CCE56711157DDE600C7EC58 /* web_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = web_back.png; sourceTree = "<group>"; };
 		4CE00B5D1470A0AE00C9C9D5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		4CE00B5F1470A0D300C9C9D5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		4CE5CC531472EC60004A72D4 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
-		4CE5CC541472EC60004A72D4 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
+		4CE09C7F1481447800B54EA0 /* FlurryAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAnalytics.h; sourceTree = "<group>"; };
+		4CE09C801481447800B54EA0 /* libFlurryAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAnalytics.a; sourceTree = "<group>"; };
 		4CE5CC5A1472F6E1004A72D4 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		4CE5CC5B1472F6E1004A72D4 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		4CE5CC5D1472F6E1004A72D4 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -660,6 +665,7 @@
 		4CE5CC931472F9C6004A72D4 /* GCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAlertView.m; sourceTree = "<group>"; };
 		4CED4AF6117D309400F9F6F5 /* BookmarkPodcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookmarkPodcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CED4AF8117D309400F9F6F5 /* Bookmark-Info-Podcasts.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bookmark-Info-Podcasts.plist"; sourceTree = "<group>"; };
+		4CF1C241148FBBA700006B92 /* Bookmark-Info2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Bookmark-Info2.plist"; sourceTree = "<group>"; };
 		4CFA42D011CE9CED00DD7306 /* bookmark-full-indexed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookmark-full-indexed.png"; sourceTree = "<group>"; };
 		4CFA437311CED01E00DD7306 /* BookmarkOldViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarkOldViewController.xib; sourceTree = "<group>"; };
 		4CFA507D14559E3300F7F19D /* SHKOAuthSharer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKOAuthSharer.h; sourceTree = "<group>"; };
@@ -818,7 +824,7 @@
 				4CCE56631157DCDC00C7EC58 /* SystemConfiguration.framework in Frameworks */,
 				4C7965A41192564D009C04D6 /* CFNetwork.framework in Frameworks */,
 				4C7965A51192564D009C04D6 /* MobileCoreServices.framework in Frameworks */,
-				4CE5CC551472EC60004A72D4 /* libFlurryAnalytics.a in Frameworks */,
+				4CE09C811481447800B54EA0 /* libFlurryAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,7 +844,7 @@
 				4CED4AF1117D309400F9F6F5 /* SystemConfiguration.framework in Frameworks */,
 				4C79656311925625009C04D6 /* CFNetwork.framework in Frameworks */,
 				4C79656511925634009C04D6 /* MobileCoreServices.framework in Frameworks */,
-				4CE5CC561472EC60004A72D4 /* libFlurryAnalytics.a in Frameworks */,
+				4CE09C821481447800B54EA0 /* libFlurryAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,7 +863,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				4CE5CC8F1472F980004A72D4 /* libicucore.dylib */,
 				4C7CCC6512A014180007CCD5 /* Classes */,
 				4C0184B611542560003A436F /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -889,6 +894,7 @@
 				4C0184EE115425F9003A436F /* Images */,
 				4C0185C91154276B003A436F /* Nibs */,
 				8D1107310486CEB800E47090 /* Bookmark-Info.plist */,
+				4CF1C241148FBBA700006B92 /* Bookmark-Info2.plist */,
 				4C4FE2AC1157049A005AC2C4 /* Entitlements.plist */,
 				4CED4AF8117D309400F9F6F5 /* Bookmark-Info-Podcasts.plist */,
 			);
@@ -898,6 +904,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CE5CC8F1472F980004A72D4 /* libicucore.dylib */,
 				4CE5CC8D1472F72C004A72D4 /* libxml2.dylib */,
 				4CE00B5F1470A0D300C9C9D5 /* Twitter.framework */,
 				4CE00B5D1470A0AE00C9C9D5 /* Accounts.framework */,
@@ -970,6 +977,7 @@
 			isa = PBXGroup;
 			children = (
 				4C0699B11442191300A9D4EC /* BookmarkView Classes */,
+				4CA4D5FA147B2A6500692E1F /* News Classes */,
 				4CA4AD701471A29D00765446 /* Settings Classes */,
 				4C4EAF9811809B7B004F41A0 /* AdBannerViewController.h */,
 				4C4EAF9911809B7B004F41A0 /* AdBannerViewController.m */,
@@ -1202,11 +1210,28 @@
 			name = "Settings Classes";
 			sourceTree = "<group>";
 		};
+		4CA4D5FA147B2A6500692E1F /* News Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "News Classes";
+			sourceTree = "<group>";
+		};
+		4CB0D50214843361002FD80B /* UIDevice_Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4CB0D50314843393002FD80B /* UIDevice+Hardware.h */,
+				4CB0D50414843393002FD80B /* UIDevice+Hardware.m */,
+			);
+			name = UIDevice_Extension;
+			sourceTree = "<group>";
+		};
 		4CCE56051157DB8700C7EC58 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				4CB0D50214843361002FD80B /* UIDevice_Extension */,
+				4CE09C7E1481447800B54EA0 /* FlurryAnalytics */,
 				4CE5CC571472F6C9004A72D4 /* Hoptoad */,
-				4CE5CC521472EC60004A72D4 /* FlurryAnalytics */,
 				4C6A139A14683E3F00C9C338 /* Singleton */,
 				4C6A13811468136C00C9C338 /* SSPieProgressView */,
 				4CFA507A14559E3300F7F19D /* ShareKit */,
@@ -1215,11 +1240,11 @@
 			name = External;
 			sourceTree = "<group>";
 		};
-		4CE5CC521472EC60004A72D4 /* FlurryAnalytics */ = {
+		4CE09C7E1481447800B54EA0 /* FlurryAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				4CE5CC531472EC60004A72D4 /* FlurryAnalytics.h */,
-				4CE5CC541472EC60004A72D4 /* libFlurryAnalytics.a */,
+				4CE09C7F1481447800B54EA0 /* FlurryAnalytics.h */,
+				4CE09C801481447800B54EA0 /* libFlurryAnalytics.a */,
 			);
 			path = FlurryAnalytics;
 			sourceTree = "<group>";
@@ -1703,7 +1728,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Dockmarket LLC";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Bookmark" */;
@@ -1808,6 +1833,7 @@
 				4C7D4037146C91FF00A30DE1 /* SleepTimeEditViewController.xib in Resources */,
 				4C19D382146D691800439CB7 /* default_album_art.png in Resources */,
 				4CE5CC891472F6E1004A72D4 /* HTNotifier.strings in Resources */,
+				4CF1C242148FBBA700006B92 /* Bookmark-Info2.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1904,7 +1930,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /usr/bin/ruby;
-			shellScript = "#!/usr/bin/ruby\n# xcode-git-cfbundleversion.rb\n# Update CFBundleVersion in Info.plist file with short Git revision string\n# http://github.com/guicocoa/xcode-git-cfbundleversion/\n#\n# This is based on\n# http://github.com/digdog/xcode-git-cfbundleversion/\n# http://github.com/jsallis/xcode-git-versioner\n# http://github.com/juretta/iphone-project-tools/tree/v1.0.3\n\nrequire 'rubygems'\nbegin\nrequire 'plist'\nrescue LoadError => e\nputs \"You need to install the 'Plist' gem: [sudo] gem install plist\"\nexit 1\nend\n\nraise \"Must be run from Xcode\" unless ENV['XCODE_VERSION_ACTUAL']\n\nGIT = \"/usr/bin/git\"\nPRODUCT_PLIST = File.join(ENV['BUILT_PRODUCTS_DIR'], ENV['INFOPLIST_PATH'])\nREVISION = `#{GIT} log --pretty=format:'' | wc -l`.scan(/\\d/).to_s\nBUNDLE_VERSION = \"CFBundleVersion\"\n\nif File.file?(PRODUCT_PLIST) and REVISION\n\n# update product plist\n`/usr/bin/plutil -convert xml1 \\\"#{PRODUCT_PLIST}\\\"`\ninfo = Plist::parse_xml(PRODUCT_PLIST)\nif info\ninfo[BUNDLE_VERSION] = REVISION\ninfo.save_plist(PRODUCT_PLIST)\nend\n`/usr/bin/plutil -convert binary1 \\\"#{PRODUCT_PLIST}\\\"`\n\n# log\nputs \"updated #{BUNDLE_VERSION} to #{REVISION}\"\n\nend";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2037,6 +2063,7 @@
 				4CE5CC851472F6E1004A72D4 /* ABNotifier.m in Sources */,
 				4CE5CC871472F6E1004A72D4 /* ABNotifierFunctions.m in Sources */,
 				4CE5CC941472F9C6004A72D4 /* GCAlertView.m in Sources */,
+				4CB0D50514843393002FD80B /* UIDevice+Hardware.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2168,6 +2195,7 @@
 				4CE5CC861472F6E1004A72D4 /* ABNotifier.m in Sources */,
 				4CE5CC881472F6E1004A72D4 /* ABNotifierFunctions.m in Sources */,
 				4CE5CC951472F9C6004A72D4 /* GCAlertView.m in Sources */,
+				4CB0D50614843393002FD80B /* UIDevice+Hardware.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2209,13 +2237,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bookmark_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_EXPAND_BUILD_SETTINGS = YES;
 				INFOPLIST_FILE = "Bookmark-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/TestFlightSDK0.7.2\"",
 					"\"$(SRCROOT)/FlurryAnalytics\"",
+					"\"$(SRCROOT)/TestFlightSDK0.8.1\"",
 				);
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_NO_WARNINGS = NO;
@@ -2238,18 +2268,20 @@
 					armv6,
 					armv7,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: DockMarket, LLC";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DockMarket, LLC";
 				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bookmark_Prefix.pch;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_EXPAND_BUILD_SETTINGS = YES;
 				INFOPLIST_FILE = "Bookmark-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/TestFlightSDK0.7.2\"",
 					"\"$(SRCROOT)/FlurryAnalytics\"",
+					"\"$(SRCROOT)/TestFlightSDK0.8.1\"",
 				);
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_NO_WARNINGS = NO;
@@ -2259,7 +2291,6 @@
 					/usr/lib/libSystem.B.dylib,
 				);
 				PRODUCT_NAME = Bookmark;
-				PROVISIONING_PROFILE = "674842CC-E253-48A6-AB7E-27EC187FC7E8";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "674842CC-E253-48A6-AB7E-27EC187FC7E8";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2278,6 +2309,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Bookmark-Info.plist";
@@ -2305,13 +2337,15 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bookmark_Prefix.pch;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_EXPAND_BUILD_SETTINGS = YES;
 				INFOPLIST_FILE = "Bookmark-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/TestFlightSDK0.7.2\"",
 					"\"$(SRCROOT)/FlurryAnalytics\"",
+					"\"$(SRCROOT)/TestFlightSDK0.8.1\"",
 				);
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_NO_WARNINGS = NO;
@@ -2331,21 +2365,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bookmark_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Bookmark-Info-Podcasts.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TestFlightSDK0.7.2\"",
 					"\"$(SRCROOT)/FlurryAnalytics\"",
+					"\"$(SRCROOT)/TestFlightSDK0.8.1\"",
 				);
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				OTHER_LDFLAGS = (
@@ -2360,20 +2393,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bookmark_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = PODCASTS_LITE;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Bookmark-Info-Podcasts.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TestFlightSDK0.7.2\"",
 					"\"$(SRCROOT)/FlurryAnalytics\"",
+					"\"$(SRCROOT)/TestFlightSDK0.8.1\"",
 				);
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				OTHER_LDFLAGS = (
@@ -2389,19 +2421,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bookmark_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Bookmark-Info-Podcasts.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TestFlightSDK0.7.2\"",
 					"\"$(SRCROOT)/FlurryAnalytics\"",
+					"\"$(SRCROOT)/TestFlightSDK0.8.1\"",
 				);
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				OTHER_LDFLAGS = (
@@ -2428,9 +2459,10 @@
 					PODCASTS_LITE,
 					DEBUG,
 				);
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Bookmark-Info-Podcasts.plist";
+				INFOPLIST_FILE = "Bookmark-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -2452,6 +2484,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DockMarket, LLC";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Bookmark-Info.plist";
