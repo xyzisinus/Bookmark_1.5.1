@@ -1,3 +1,5 @@
+Perform these on as many devices as you can
+===========================================
 
 1. Start a multi-track book or podcast from the library view. Allow it to progress from one track to another without tapping the FF button (you can guide the time close to end of track to speed this up).  The track and titles should update correctly.
 
@@ -13,10 +15,15 @@
 
 7. Start Bookmark with a non-book (and non-podcast) track playing. It should stop playback.
 
-8. Start a multi-track work in player and position time near the end of the track.  Enter HUD and allow track to change automatically.  Go back to player and verify correct track # is set.
+8. Try final track of a multi-track book, allow it to end and make sure no errors occur.
 
-9. Try final track of a multi-track book, allow it to end and make sure no errors occur.
+9. Ensure this does not happen (from matthias.otto.hb@gmail.com in version 1.5)
 
+  While listening to an audiobook, go back to library, select any podcast and start playing. Go back to library and select the same audiobook you were just listening too. The position will show 0:00 (it forgot where we left off) and also the time remaining will still show the value of the Podcast, not the time remaining of the book.
+
+10. Play a book, go back to library and select the same book from the tableview (not Playing).
+
+11. Verify Complete and New reset lastTime and maxTime.
 
 ---------------------------------------------------------------------
 iOS4+ with backgrounding only

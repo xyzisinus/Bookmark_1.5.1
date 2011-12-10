@@ -202,13 +202,13 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];	
-	
+    	
 	//Update the current work's times one more time.
 	//Note the "stopped" check was added to fix a bug that would 
 	//set the time of the first track in a work to 0 even after "updateAsComplete"
 	//was called. It's b/c "current" was reset to the first track and the player showed
 	//0 time because playback was stopped.
-	if (player.playerController.playbackState != MPMusicPlaybackStateStopped) {
+	if (player.playerController.playbackState != MPMusicPlaybackStateStopped) {        
 		[player.currentCollection saveState];
 	}	
 		
@@ -223,8 +223,8 @@
 	trackTitleLabel.labelDelegate = nil;
 }
 
-//This does the main setup of string and image attributes with the current work and track.
-//It is called when PlayerViewController is first created and upon resume from background.
+// This does the main setup of string and image attributes with the current work and track.
+// It is called when PlayerViewController is first created and upon resume from background.
 - (void)configurePlayerForCurrentWork:(BOOL)shouldBeginPlaying {
 
     MPMediaItem *item = [player currentItem];    
@@ -251,7 +251,7 @@
 		
 	//play the current track if not already playing	
 	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	if (shouldBeginPlaying && ![player isPlaying]) {		
+	if (shouldBeginPlaying && player.isPlaying == NO) {		
 		[player beginPlaying];
 	}	
         
@@ -470,7 +470,7 @@
     hud.showInstructions = YES;
     
     // Set a larger back button for easier navigation
-    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle: @"               " 
+    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle: @"Back           " 
                                                                       style: UIBarButtonItemStyleBordered 
                                                                      target: nil 
                                                                      action: nil];    
@@ -598,7 +598,7 @@
 // or when backgrounded. If time requests are made of MPMusicPlayerController,
 // its "server" can die.
 - (void)updateCurrentTime {	
-	if (player.isPlaying) {
+	if (player.isPlaying == YES) {
 		timeElapsedLabel.text = [player currentPlaybackTimeString:NO];
         timeElapsedLabel.accessibilityLabel = [NSString stringWithFormat:@"Elapsed %@",[player currentPlaybackTimeString:YES]];
 		timeRemainingLabel.text = [player currentRemainingTimeString:NO];
@@ -653,14 +653,14 @@
 }
 
 - (void)nowPlayingItemChanged:(NSNotification *)notification {
+    DLog(@"nowPlayingItemChanged to %@",player.currentItem.title);
     
     if (player.currentItem == nil) {
         [self.navigationController popViewControllerAnimated:YES];
+    } else {        
+        totalWorkSeconds = [[player currentItem] duration]; 
+        [self updateTrackAndTitleLabelsWithAnimation:YES];		
     }
-        
-	totalWorkSeconds = [[player currentItem] duration];
-    
-	[self updateTrackAndTitleLabelsWithAnimation:YES];		
 }
 
 #pragma mark -

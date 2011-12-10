@@ -12,12 +12,15 @@
 #include <AudioToolbox/AudioToolbox.h>
 #include "MPMediaItem+Track.h"
 #include "MPMediaItemCollection+Work.h"
+#include "UIDevice+Hardware.h"
 
 @interface MasterMusicPlayer : NSObject <AVAudioSessionDelegate> {
-	long currentTrackTotalTime;	
-	BOOL ignoreNowPlayingItemChange;
+	long currentTrackTotalTime;		
     BOOL didUserRequestItemChange;
-	long forcePlaybackTime;
+    BOOL ignoreNowPlayingItemChange;
+    BOOL itemSetManually;
+    BOOL isFirstPlayback;
+	long forcePlaybackTime;    
     BOOL clickBuzz;
     BOOL chimeBuzz;
     BOOL bellBuzz;
@@ -26,7 +29,7 @@
 + (MasterMusicPlayer *)instance;
 + (void)clearInstance;
 
-@property (nonatomic, retain) MPMusicPlayerController   *playerController; 
+@property (nonatomic, retain) MPMusicPlayerController   *playerController;                   
 @property (nonatomic, retain) MPMediaItemCollection     *currentCollection;
 @property (nonatomic, retain) MPMediaItem               *currentItem;
 @property (nonatomic, retain) MPMediaItem               *lastPlayedItem;
@@ -34,6 +37,7 @@
 @property (nonatomic, retain) AVAudioPlayer             *bellPlayer;
 @property (nonatomic, retain) AVAudioPlayer             *clickPlayer;
 @property (nonatomic, retain) AVAudioPlayer             *chimePlayer;
+@property (nonatomic, readonly) BOOL                    isIPad;
 
 - (void)evalTime;
 - (void)setCollectionForColdPlayback:(MPMediaItemCollection *)collection;

@@ -131,7 +131,7 @@
     }
     
     // Update track attributes
-    NSNumber *curTime = [NSNumber numberWithLong:[mmp currentPlaybackTime]];
+    NSNumber *curTime = [NSNumber numberWithLong:[mmp currentPlaybackTime]];    
     track.lastTime = curTime;
     if ([curTime compare:track.maxTime] == NSOrderedDescending) track.maxTime = curTime;
     
@@ -155,7 +155,7 @@
     [CoreDataUtility save];
     inSave = NO;
     
-    DLog(@"Saved state: lastTime: %ld, maxTime: %ld", [track.lastTime longValue], [track.maxTime longValue]);
+    //DLog(@"Saved state: lastTime: %ld, maxTime: %ld", [track.lastTime longValue], [track.maxTime longValue]);
 }
 
 - (NSString *)formatForEmail {

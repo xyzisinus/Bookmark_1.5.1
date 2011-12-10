@@ -29,6 +29,11 @@
 static BOOL showedNoMediaMsg = NO;
 
 - (void)dealloc {	
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter removeObserver:self 
+                                  name:@"PlayingItemChanged" 
+                                object:nil];
+    
     [collections release];
 	[tableView release];
 	[tabBar release];	
@@ -195,6 +200,14 @@ static BOOL showedNoMediaMsg = NO;
 #endif
 		
 	self.player = [MasterMusicPlayer instance];
+    
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+	
+	[notificationCenter
+	 addObserver: self
+	 selector:    @selector(nowPlayingItemChanged:)
+	 name:        @"PlayingItemChanged"
+	 object:      nil];
 	
 	// Startup logic:
 	// 1. if a track is playing currently and it's a supported media type, show it now 
@@ -330,6 +343,15 @@ static BOOL showedNoMediaMsg = NO;
 	if (buttonIndex == 0) {
 		[self showSettingsWithAutotutorial:YES];
 	} 
+}
+
+#pragma mark - MasterMusicPlayer notifications
+
+- (void)nowPlayingItemChanged:(NSNotification *)notification {    
+    if (waitingItemChange == YES) {
+        [self pushPlayerView:YES];
+        waitingItemChange = NO;
+    }
 }
 
 #pragma mark -
@@ -471,10 +493,22 @@ static BOOL showedNoMediaMsg = NO;
 	return workCell;
 }
 
-- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {    
     MPMediaItemCollection *coll = [collections objectAtIndex:indexPath.row];	    
-    [player setCollectionForColdPlayback:coll];
-	[self pushPlayerView:YES];
+    
+    // First handle the case where the user selected the now-playing collection. 
+    // If we don't treat it like the "Playing" button, the PVC will not be pushed
+    // because MMP will abort the nowPlayingItem function due to matching ID's.   
+    // We compare titles instead of ID's here because on iOS 4, the "real" collection is
+    // different than the player's collection, which is a copy and has an ID of 0.
+    if (player.currentCollection != nil && [coll.title isEqualToString:player.currentCollection.title]) {                   
+        [player attemptPlaybackOfLastPlayedItem];
+        [self pushPlayerView:YES];       
+    } else {
+        // More common scenario, see nowPlayingItemChanged for next step
+        waitingItemChange = YES;
+        [player setCollectionForColdPlayback:coll];
+    }    
 }
 
 - (void)pushPlayerView:(BOOL)animated {
