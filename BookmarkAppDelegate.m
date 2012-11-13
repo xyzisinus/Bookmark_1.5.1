@@ -10,7 +10,7 @@
 #import "LibraryViewController.h"
 #import "MasterMusicPlayer.h"
 #import "CoreDataUtility.h"
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 #import "ABNotifier.h"
 
 //for memory calls 
@@ -38,7 +38,7 @@
                                delegate:nil];
         
     // Start Flurry
-    [FlurryAnalytics startSession:@"8CAFIEM1JJK1WZEIBY6I"];
+    [Flurry startSession:@"8CAFIEM1JJK1WZEIBY6I"];
             
     // Set defaults
     [[DMUserDefaults sharedInstance] initializeDefaults];
