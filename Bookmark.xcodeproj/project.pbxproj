@@ -1786,10 +1786,7 @@
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_NO_WARNINGS = NO;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = YES;
-				OTHER_LDFLAGS = (
-					"-weak_library",
-					/usr/lib/libSystem.B.dylib,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Bookmark;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1819,10 +1816,7 @@
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_NO_WARNINGS = NO;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = YES;
-				OTHER_LDFLAGS = (
-					"-weak_library",
-					/usr/lib/libSystem.B.dylib,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Bookmark;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "674842CC-E253-48A6-AB7E-27EC187FC7E8";
 				VALIDATE_PRODUCT = YES;
@@ -1877,10 +1871,7 @@
 				MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS = YES;
 				MOMC_NO_WARNINGS = NO;
 				MOMC_SUPPRESS_INVERSE_TRANSIENT_ERROR = YES;
-				OTHER_LDFLAGS = (
-					"-weak_library",
-					/usr/lib/libSystem.B.dylib,
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Bookmark;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
